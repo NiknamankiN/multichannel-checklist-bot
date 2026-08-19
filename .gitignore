@@ -1,0 +1,43 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Configuration and secrets
+config.*
+!config.example.*
+settings.*
+!settings.example.*
+.env
+.env.*
+!.env.example
+.ssh/
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.*
+service-account*.json
+
+# Databases
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+
+# Logs and runtime data
+logs/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE and OS
+.DS_Store
+.idea/
+.vscode/

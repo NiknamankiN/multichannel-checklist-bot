@@ -1,0 +1,26 @@
+services:
+  # Сервис для Telegram бота (Long Polling for Telegram)
+  telegram-bot:
+    profiles: ["telegram"]
+    build: .
+    container_name: telegram_bot
+    restart: unless-stopped
+    command: ["python", "main.py", "run_telegram"]
+    volumes:
+      - ./config.ini:/app/config.ini
+      - ./telegram.db:/app/telegram.db
+      - ./logs:/app/logs
+
+  # Сервис для Max Messenger бота (FastAPI Webhook for Max)
+  max-bot:
+    profiles: ["max"]
+    build: .
+    container_name: max_bot
+    restart: unless-stopped
+    command: ["python", "main.py", "run_max"]
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./config.ini:/app/config.ini
+      - ./telegram.db:/app/telegram.db
+      - ./logs:/app/logs
